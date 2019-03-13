@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+import './demo.dart';
+
+class Demo extends StatelessWidget {
+
+  static const String routeName = '/element/Image';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Image"),
+      ),
+      // body: Center( 
+      //   child: Text("This is new route"),
+      // ),
+      body: ImageDemo(),
+    );
+  }
+}
