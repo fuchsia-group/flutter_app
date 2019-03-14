@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../widgets/elements/Scrollable/ListView/index.dart';
+import '../../widgets/elements/Scrollable/ScrollController/Notification/index.dart';
 import 'home.dart';
+import '../../widgets/index.dart';
+import '../../model/widget.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -120,6 +122,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyDrawer extends StatelessWidget {
+  
+  List widgetDemosList = WidgetDemoList().getDemos();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -148,16 +153,29 @@ class MyDrawer extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    leading: const Icon(Icons.adb),
-                    title: const Text("Add account"),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.settings),
-                    title: const Text("Manage accounts"),
-                  )
-                ],
+                // children: <Widget>[
+                //   ListTile(
+                //     leading: const Icon(Icons.add),
+                //     title: const Text("Add account"),
+                //   ),
+                //   ListTile(
+                //     leading: const Icon(Icons.settings),
+                //     title: const Text("Manage accounts"),
+                //   )
+                // ],
+                children: widgetDemosList.map((e) {
+                  if (e is WidgetPoint) {
+                    return ListTile(
+                      leading: const Icon(Icons.adb),
+                      title: Text(e.name),
+                    );
+                  } else {
+                    return ListTile(
+                      leading: const Icon(Icons.settings),
+                      title: const Text("Manage accounts"),
+                    );
+                  }
+                }).toList(),
               ),
             )
           ],
