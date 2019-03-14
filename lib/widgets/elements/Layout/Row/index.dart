@@ -3,6 +3,8 @@ import './demo.dart';
 
 class Demo extends StatelessWidget {
 
+   static const String routeName = '/element/Layout/Row';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

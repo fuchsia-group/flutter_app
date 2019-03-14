@@ -3,18 +3,18 @@ import './demo.dart';
 
 class Demo extends StatelessWidget {
 
-  static const String routeName = '/element/Container/DecoratedBox';
+  static const String routeName = '/element/Form/CheckBox';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("DecoratedBox"),
+        title: Text("CheckBox"),
       ),
-      // body: Center( 
+      // body: Center(
       //   child: Text("This is new route"),
       // ),
-      body: DecoratedBoxDemo(),
+      body: CheckBoxDemo(),
     );
   }
 }
