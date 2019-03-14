@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/elements/Container/Scaffold/index.dart';
+import '../../widgets/elements/Scrollable/ListView/index.dart';
 import 'home.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -41,12 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         title: Text("首页"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.share), onPressed: () {})
         ],
       ),
+      drawer: MyDrawer(),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("Open new route"),
               textColor: Colors.blue,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context){
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return Demo();
                 }));
               },
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("Open new route"),
               textColor: Colors.blue,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context){
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return HemoPage();
                 }));
               },
@@ -95,11 +96,73 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
+        shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
+        child: Row(
+          children: <Widget>[
+            IconButton(icon: Icon(Icons.home), onPressed: () {}),
+            SizedBox(),
+            IconButton(icon: Icon(Icons.business), onPressed: () {})
+          ],
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        ),
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerDocked, // 移动到中间
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 38.0),
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: ClipOval(
+                      child: Text("Jack"),
+                    ),
+                  ),
+                  Text(
+                    "Wendux",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  ListTile(
+                    leading: const Icon(Icons.adb),
+                    title: const Text("Add account"),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.settings),
+                    title: const Text("Manage accounts"),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
