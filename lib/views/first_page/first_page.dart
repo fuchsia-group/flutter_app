@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/components/InheritedWidget/index.dart';
+import '../../widgets/event/GestureDetector/GestureRecognizer/index.dart';
 import 'home.dart';
 import '../../widgets/index.dart';
 import '../../model/widget.dart';

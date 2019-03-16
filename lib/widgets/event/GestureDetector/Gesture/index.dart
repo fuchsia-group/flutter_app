@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import './demo.dart';
 
 class Demo extends StatelessWidget {
-  static const String routeName = '/components/WillPopScope';
+
+   static const String routeName = '/element/Scrollable/GridView';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("New route"),
+        title: Text("GestureDetector"),
       ),
-      // body: Center(
-      //   child: Text("This is new route"),
-      // ),
-      body: WillPopScopeDemo(),
+      body: GestureDetectorDemo(),
     );
   }
 }
