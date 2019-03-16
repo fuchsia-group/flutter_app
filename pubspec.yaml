@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -45,6 +45,9 @@ flutter:
   assets:
   #  - images/ic_test_0.jpg
     - assets/images/
+    - images/test1.jpg
+    - images/test2.jpg
+    - images/test3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

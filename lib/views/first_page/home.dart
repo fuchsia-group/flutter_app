@@ -19,7 +19,7 @@ class HemoPageState extends State<HemoPage>
   ];
 
   String appBarTitle = tabs[0]['text'];
-
+var _pageController = new PageController(initialPage: 0);
   List<Widget> myTabs = [];
 
   int _selectedIndex = 1;
@@ -54,14 +54,16 @@ class HemoPageState extends State<HemoPage>
         //     controller: _tabController,
         //     tabs: tabs.map((e) => Tab(text: e)).toList()),
       ),
-      // body: TabBarView(
-      //   controller: _tabController,
-      //   children: <Widget>[
-      //     MyHomePage(),
-      //     MyHomePage(),
-      //     MyHomePage(),
-      //   ],
-      // ),
+      body: PageView.builder(
+        itemCount: 3,
+        controller: _pageController,
+        onPageChanged: _onItemTapped,
+        itemBuilder: (BuildContext context, int index){
+          return Center(
+            child: Text("第$index 个页面"),
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("首页")),
@@ -93,7 +95,11 @@ class HemoPageState extends State<HemoPage>
     setState(() {
       _selectedIndex = index;
     });
+      _pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 300), curve: Curves.ease);
   }
+
+
 
   void _onAdd() {}
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../widgets/event/GestureDetector/GestureRecognizer/index.dart';
+// import '../../widgets/elements/Scrollable/ListView/index.dart';
 import 'home.dart';
-import '../../widgets/index.dart';
-import '../../model/widget.dart';
+import 'package:flutter_app/widget_view_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -46,7 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("首页"),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.share), onPressed: () {})
+          IconButton(icon: Icon(Icons.share), onPressed: () {}),
+          IconButton(icon: Icon(Icons.favorite, color: Colors.white, ), onPressed: null,)
         ],
       ),
       drawer: MyDrawer(),
@@ -94,6 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   return HemoPage();
                 }));
               },
+            ),
+           FlatButton(
+              child: Text("page three"),
+              textColor: Colors.grey,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ViewPageExample()));
+              },
             )
           ],
         ),
@@ -115,16 +123,13 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add_a_photo),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
 
 class MyDrawer extends StatelessWidget {
-  
-  List widgetDemosList = WidgetDemoList().getDemos();
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -153,29 +158,16 @@ class MyDrawer extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                // children: <Widget>[
-                //   ListTile(
-                //     leading: const Icon(Icons.add),
-                //     title: const Text("Add account"),
-                //   ),
-                //   ListTile(
-                //     leading: const Icon(Icons.settings),
-                //     title: const Text("Manage accounts"),
-                //   )
-                // ],
-                children: widgetDemosList.map((e) {
-                  if (e is WidgetPoint) {
-                    return ListTile(
-                      leading: const Icon(Icons.adb),
-                      title: Text(e.name),
-                    );
-                  } else {
-                    return ListTile(
-                      leading: const Icon(Icons.settings),
-                      title: const Text("Manage accounts"),
-                    );
-                  }
-                }).toList(),
+                children: <Widget>[
+                  ListTile(
+                    leading: const Icon(Icons.adb),
+                    title: const Text("Add account"),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.settings),
+                    title: const Text("Manage accounts"),
+                  )
+                ],
               ),
             )
           ],
