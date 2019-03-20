@@ -9,17 +9,16 @@ class HemoPage extends StatefulWidget {
 
 class HemoPageState extends State<HemoPage>
     with SingleTickerProviderStateMixin {
-
   TabController _tabController;
 
   static List tabs = [
-    {"text": "首页", "icon": Icon(Icons.home)},
-    {"text": "附近", "icon": Icon(Icons.map)},
-    {"text": "我的", "icon": Icon(Icons.person)}
+    {"text": "WIDGET", "icon": Icon(Icons.extension)},
+    {"text": "CodeLab", "icon": Icon(Icons.code)},
+    {"text": "About", "icon": Icon(Icons.import_contacts)}
   ];
 
   String appBarTitle = tabs[0]['text'];
-var _pageController = new PageController(initialPage: 0);
+  var _pageController = new PageController(initialPage: 0);
   List<Widget> myTabs = [];
 
   int _selectedIndex = 1;
@@ -27,11 +26,15 @@ var _pageController = new PageController(initialPage: 0);
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: 0,length: tabs.length, vsync: this);
+    _tabController =
+        TabController(initialIndex: 0, length: tabs.length, vsync: this);
     for (var i = 0; i < tabs.length; i++) {
-      myTabs.add(Tab(text: tabs[i]['text'],icon: tabs[i]['icon'],));
+      myTabs.add(Tab(
+        text: tabs[i]['text'],
+        icon: tabs[i]['icon'],
+      ));
     }
-    _tabController.addListener((){
+    _tabController.addListener(() {
       _onTabChange();
     });
   }
@@ -58,7 +61,7 @@ var _pageController = new PageController(initialPage: 0);
         itemCount: 3,
         controller: _pageController,
         onPageChanged: _onItemTapped,
-        itemBuilder: (BuildContext context, int index){
+        itemBuilder: (BuildContext context, int index) {
           return Center(
             child: Text("第$index 个页面"),
           );
@@ -67,10 +70,8 @@ var _pageController = new PageController(initialPage: 0);
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("首页")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.map), title: Text("附近")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text("我的")),
+          BottomNavigationBarItem(icon: Icon(Icons.map), title: Text("附近")),
+          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text("我的")),
         ],
         currentIndex: _selectedIndex,
         fixedColor: Colors.blue,
@@ -85,9 +86,7 @@ var _pageController = new PageController(initialPage: 0);
 
   void _onTabChange() {
     if (this.mounted) {
-      this.setState(
-        appBarTitle =tabs[_tabController.index]["text"]
-      );
+      this.setState(appBarTitle = tabs[_tabController.index]["text"]);
     }
   }
 
@@ -95,11 +94,9 @@ var _pageController = new PageController(initialPage: 0);
     setState(() {
       _selectedIndex = index;
     });
-      _pageController.animateToPage(index,
+    _pageController.animateToPage(index,
         duration: const Duration(milliseconds: 300), curve: Curves.ease);
   }
-
-
 
   void _onAdd() {}
 }
