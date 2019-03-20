@@ -6,7 +6,6 @@ class CheckBoxDemo extends StatefulWidget {
   CheckBoxDemoState createState() {
     return CheckBoxDemoState();
   }
-
 }
 
 class CheckBoxDemoState extends State<CheckBoxDemo> {
