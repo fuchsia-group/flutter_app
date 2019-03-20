@@ -30,9 +30,11 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
-  final List<StatelessWidget> _messages = <StatelessWidget>[];
+  final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textEditingController = TextEditingController();
   bool _isComposing = false;
+
+  int _count = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -111,22 +113,36 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     setState(() {
       _isComposing = false;
     });
-    ChatMessage message = ChatMessage(
+    ChatMessage selfMsg = SelfChatMessage(
+      text: text,
+      animationController: AnimationController(
+          duration: Duration(microseconds: 700), vsync: this),
+    );
+    ChatMessage otherMsg = OtherChatMessage(
       text: text,
       animationController: AnimationController(
           duration: Duration(microseconds: 700), vsync: this),
     );
     setState(() {
-      _messages.insert(0, message);
+      if (_count % 2 == 0) {
+        _messages.insert(0, otherMsg);
+      } else {
+        _messages.insert(0, selfMsg);
+      }
     });
-    message.animationController.forward();
+
+    if (_count % 2 == 0) {
+      otherMsg.animationController.forward();
+    } else {
+      selfMsg.animationController.forward();
+    }
+    _count++;
   }
 }
 
-class SelfChatMessage extends StatelessWidget {
-  SelfChatMessage({this.text, this.animationController});
-  final String text;
-  final AnimationController animationController;
+class SelfChatMessage extends ChatMessage {
+  SelfChatMessage({text: String, animationController: AnimationController})
+      : super(text: text, animationController: animationController);
 
   @override
   Widget build(BuildContext context) {
@@ -148,8 +164,8 @@ class SelfChatMessage extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            border: Border.all(color: Colors.grey, width: 1.0),
+                            color: Colors.green[200],
+                            border: Border.all(color: Colors.green, width: 1.0),
                             borderRadius: BorderRadius.circular(5)),
                         margin: EdgeInsets.only(top: 5.0),
                         child: Text(text),
@@ -170,10 +186,9 @@ class SelfChatMessage extends StatelessWidget {
   }
 }
 
-class ChatMessage extends StatelessWidget {
-  ChatMessage({this.text, this.animationController});
-  final String text;
-  final AnimationController animationController;
+class OtherChatMessage extends ChatMessage {
+  OtherChatMessage({text: String, animationController: AnimationController})
+      : super(text: text, animationController: animationController);
 
   @override
   Widget build(BuildContext context) {
@@ -215,4 +230,10 @@ class ChatMessage extends StatelessWidget {
           ),
         ));
   }
+}
+
+abstract class ChatMessage extends StatelessWidget {
+  ChatMessage({this.text, this.animationController});
+  final String text;
+  final AnimationController animationController;
 }
