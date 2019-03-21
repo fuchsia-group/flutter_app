@@ -31,7 +31,6 @@ class CodeLabDemoState extends State<CodeLabDemo>
         title: Text("CodeLab"),
       ),
       body: ListView.separated(
-        padding: EdgeInsets.all(8.0),
         itemBuilder: (_, index) => _buildItem(index),
         itemCount: _messages.length,
         separatorBuilder: (BuildContext context, int index) {
@@ -42,13 +41,30 @@ class CodeLabDemoState extends State<CodeLabDemo>
   }
 
   Widget _buildItem(int index) {
-    return ListTile(
-      title: Text(_messages[index]["text"]),
+    return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return _messages[index]["widget"];
         }));
       },
+      child: Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(5.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            CircleAvatar(
+              child: Text(_messages[index]["text"][0]),
+            ),
+            Container(
+                margin: EdgeInsets.only(left: 5.0),
+                child: Text(
+                  _messages[index]["text"],
+                  style: TextStyle(fontSize: 18.0),
+                ))
+          ],
+        ),
+      ),
     );
   }
 }
