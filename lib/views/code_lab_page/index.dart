@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'friendly_chat.dart';
 import 'widget_view_page.dart';
+import 'animated_list.dart';
 import 'widget_list.dart';
 
 class CodeLab extends StatelessWidget {
@@ -20,12 +21,14 @@ class CodeLabDemoState extends State<CodeLabDemo>
   final List _messages = [
     {"text": "FriendlyChat", "widget": FriendlychatApp()},
     {"text": "PageThree", "widget": ViewPageExample()},
+    {"text": "AnimatedList", "widget": AnimatedListDemo()},
     {"text": "WidgetList", "widget": WidgetList()},
   ];
 
   @override
   void initState() {
     super.initState();
+    _messages.sort((a, b) => a["text"].compareTo(b["text"]));
   }
 
   @override
