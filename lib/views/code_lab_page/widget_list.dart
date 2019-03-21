@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'model/widget.dart';
-import 'widgets/index.dart';
+import 'package:flutter_app/model/widget.dart';
+import 'package:flutter_app/widgets/index.dart';
 
 class WidgetList extends StatelessWidget {
   @override
@@ -35,14 +35,12 @@ class WidgetListDemoState extends State<WidgetListDemo> {
   }
 
   Widget _buildItems() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
+    return ListView.separated(
+      padding: const EdgeInsets.all(8.0),
       itemCount: widgetDemosList.length,
-      itemBuilder: (context, i) {
-        if (i.isOdd) {
-          return new Divider();
-        }
-        return _buildRow(widgetDemosList[i]);
+      itemBuilder: (context, i) => _buildRow(widgetDemosList[i]),
+      separatorBuilder: (context,index) {
+        return Divider();
       },
     );
   }
@@ -50,11 +48,6 @@ class WidgetListDemoState extends State<WidgetListDemo> {
   Widget _buildRow(WidgetPoint widgetPoint) {
     return ListTile(
       title: Text(widgetPoint.name),
-      onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) {
-        //   return ;
-        // }));
-      },
     );
   }
 

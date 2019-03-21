@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/elements/Form/TextField/index.dart';
 import 'main.dart';
-import 'package:flutter_app/widget_view_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -95,13 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
             ),
-           FlatButton(
-              child: Text("page three"),
-              textColor: Colors.grey,
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ViewPageExample()));
-              },
-            )
           ],
         ),
       ),
