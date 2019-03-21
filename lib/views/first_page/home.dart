@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/first_page/first_page.dart';
+import 'package:flutter_app/views/code_lab_page/index.dart';
+import 'package:flutter_app/widgets/404.dart';
 
 class HemoPage extends StatefulWidget {
   @override
@@ -7,96 +10,58 @@ class HemoPage extends StatefulWidget {
   }
 }
 
-class HemoPageState extends State<HemoPage>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
+class HemoPageState extends State<HemoPage> {
 
   static List tabs = [
-    {"text": "WIDGET", "icon": Icon(Icons.extension)},
-    {"text": "CodeLab", "icon": Icon(Icons.code)},
-    {"text": "About", "icon": Icon(Icons.import_contacts)}
+    {"text": Text("WIDGET"), "icon": Icon(Icons.extension)},
+    {"text": Text("CodeLab"), "icon": Icon(Icons.code)},
+    {"text": Text("About"), "icon": Icon(Icons.import_contacts)}
   ];
 
-  String appBarTitle = tabs[0]['text'];
-  var _pageController = new PageController(initialPage: 0);
-  List<Widget> myTabs = [];
+  List<BottomNavigationBarItem> myTabs = [];
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(initialIndex: 0, length: tabs.length, vsync: this);
     for (var i = 0; i < tabs.length; i++) {
-      myTabs.add(Tab(
-        text: tabs[i]['text'],
+      myTabs.add(BottomNavigationBarItem(
+        title: tabs[i]['text'],
         icon: tabs[i]['icon'],
       ));
     }
-    _tabController.addListener(() {
-      _onTabChange();
-    });
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("首页"),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.share), onPressed: () {})
+      body: IndexedStack(
+        children: <Widget>[
+          MyHomePage(),
+          CodeLab(),
+          WidgetNotFound(),
         ],
-        // bottom: TabBar(
-        //     controller: _tabController,
-        //     tabs: tabs.map((e) => Tab(text: e)).toList()),
-      ),
-      body: PageView.builder(
-        itemCount: 3,
-        controller: _pageController,
-        onPageChanged: _onItemTapped,
-        itemBuilder: (BuildContext context, int index) {
-          return Center(
-            child: Text("第$index 个页面"),
-          );
-        },
+        index: _selectedIndex,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("首页")),
-          BottomNavigationBarItem(icon: Icon(Icons.map), title: Text("附近")),
-          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text("我的")),
-        ],
+        items: myTabs,
         currentIndex: _selectedIndex,
         fixedColor: Colors.blue,
         onTap: _onItemTapped,
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: _onAdd,
-      ),
     );
-  }
-
-  void _onTabChange() {
-    if (this.mounted) {
-      this.setState(appBarTitle = tabs[_tabController.index]["text"]);
-    }
   }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    _pageController.animateToPage(index,
-        duration: const Duration(milliseconds: 300), curve: Curves.ease);
   }
 
-  void _onAdd() {}
 }

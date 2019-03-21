@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/elements/Form/TextField/index.dart';
-import 'home.dart';
+import 'package:flutter_app/widgets/elements/Form/TextField/index.dart';
+import 'main.dart';
 import 'package:flutter_app/widget_view_page.dart';
 
 class MyHomePage extends StatefulWidget {

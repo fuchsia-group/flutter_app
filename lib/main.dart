@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'routers/routers.dart';
 import 'routers/application.dart';
-import 'views/first_page/first_page.dart';
-import 'views/code_lab_page/friendly_chat.dart';
+import 'views/first_page/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +33,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage());
+        home: HemoPage());
   }
 }

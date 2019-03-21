@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 
 const String _name = "佐助";
 const String _m_name = "鸣人";
-// const String _name = "Your Name";
 
 final ThemeData kIOSTheme = ThemeData(
     primarySwatch: Colors.orange,
