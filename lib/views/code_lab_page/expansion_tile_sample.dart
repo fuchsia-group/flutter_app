@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+
+class ExpansionTileSample extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("ExpansionTile"),),
+      body: ExpansionTileDemo(),
+    );
+  }
+}
+
 class ExpansionTileDemo extends StatefulWidget {
   @override
   ExpansionTileDemoState createState() {

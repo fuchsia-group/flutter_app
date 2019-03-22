@@ -3,6 +3,12 @@ import 'friendly_chat.dart';
 import 'widget_view_page.dart';
 import 'animated_list.dart';
 import 'widget_list.dart';
+import 'app_bar_bottom.dart';
+import 'basic_app_bar.dart';
+import 'tabbed_app_bar.dart';
+import 'custom_a11y_traversal.dart';
+import 'expansion_tile_sample.dart';
+import 'custom_semantics.dart';
 
 class CodeLab extends StatelessWidget {
   @override
@@ -23,6 +29,15 @@ class CodeLabDemoState extends State<CodeLabDemo>
     {"text": "PageThree", "widget": ViewPageExample()},
     {"text": "AnimatedList", "widget": AnimatedListDemo()},
     {"text": "WidgetList", "widget": WidgetList()},
+    {"text": "AppBarBottomSample", "widget": AppBarBottomSample()},
+    {"text": "BaseAppBarSample", "widget": BaseAppBarSample()},
+    {"text": "TabbedAppBarSample", "widget": TabbedAppBarSample()},
+    {"text": "CustomTraversalExample", "widget": CustomTraversalExample()},
+    {"text": "ExpansionTileSample", "widget": ExpansionTileSample()},
+    {
+      "text": "AdjustableDropdownExample",
+      "widget": AdjustableDropdownExample()
+    },
   ];
 
   @override
