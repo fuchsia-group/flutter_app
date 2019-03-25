@@ -49,6 +49,7 @@ class HemoPageState extends State<HemoPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
+        physics: NeverScrollableScrollPhysics(), // 取消左右滑动
         itemCount: 3,
         controller: _pageController,
         onPageChanged: _onItemTapped,

@@ -11,7 +11,6 @@ class HemoPage extends StatefulWidget {
 }
 
 class HemoPageState extends State<HemoPage> {
-
   static List tabs = [
     {"text": Text("WIDGET"), "icon": Icon(Icons.extension)},
     {"text": Text("CodeLab"), "icon": Icon(Icons.code)},
@@ -49,11 +48,17 @@ class HemoPageState extends State<HemoPage> {
         ],
         index: _selectedIndex,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: myTabs,
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blue,
-        onTap: _onItemTapped,
+      bottomNavigationBar: Theme(
+        data: ThemeData( // 去掉点击水波纹
+            brightness: Theme.of(context).brightness,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent),
+        child: BottomNavigationBar(
+          items: myTabs,
+          currentIndex: _selectedIndex,
+          fixedColor: Colors.blue,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
@@ -63,5 +68,4 @@ class HemoPageState extends State<HemoPage> {
       _selectedIndex = index;
     });
   }
-
 }

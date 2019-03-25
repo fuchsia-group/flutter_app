@@ -91,7 +91,7 @@ class TextFieldDemoState extends State<TextFieldDemo> {
                     border: Border.all(color: Colors.green, width: 1.0),
                     borderRadius: BorderRadius.circular(12.0)),
                 child: TextFormField(
-                  decoration: InputDecoration.collapsed(hintText: "Hello"),
+                  decoration: InputDecoration.collapsed(hintText: "textFormField"),
                 ),
               ),
 
