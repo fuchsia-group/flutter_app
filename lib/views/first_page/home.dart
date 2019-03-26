@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/first_page/first_page.dart';
 import 'package:flutter_app/views/code_lab_page/index.dart';
-import 'package:flutter_app/widgets/404.dart';
+import 'package:flutter_app/views/mine/mine.dart';
+import 'package:flutter_app/views/api/api.dart';
 
 class HemoPage extends StatefulWidget {
   @override
@@ -14,7 +15,8 @@ class HemoPageState extends State<HemoPage> {
   static List tabs = [
     {"text": Text("WIDGET"), "icon": Icon(Icons.extension)},
     {"text": Text("CodeLab"), "icon": Icon(Icons.code)},
-    {"text": Text("About"), "icon": Icon(Icons.import_contacts)}
+    {"text": Text("API"), "icon": Icon(Icons.apps)},
+    {"text": Text("Mine"), "icon": Icon(Icons.person)},
   ];
 
   List<BottomNavigationBarItem> myTabs = [];
@@ -41,15 +43,12 @@ class HemoPageState extends State<HemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        children: <Widget>[
-          MyHomePage(),
-          CodeLab(),
-          WidgetNotFound(),
-        ],
+        children: <Widget>[MyHomePage(), CodeLab(), API(), MinePage()],
         index: _selectedIndex,
       ),
       bottomNavigationBar: Theme(
-        data: ThemeData( // 去掉点击水波纹
+        data: ThemeData(
+            // 去掉点击水波纹
             brightness: Theme.of(context).brightness,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent),
@@ -58,6 +57,7 @@ class HemoPageState extends State<HemoPage> {
           currentIndex: _selectedIndex,
           fixedColor: Colors.blue,
           onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
         ),
       ),
     );
