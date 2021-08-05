@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import './demo.dart';
 
 class Demo extends StatelessWidget {
-
   static const String routeName = '/components/InheritedWidget';
 
   @override
@@ -11,7 +10,7 @@ class Demo extends StatelessWidget {
       appBar: AppBar(
         title: Text("New route"),
       ),
-      // body: Center( 
+      // body: Center(
       //   child: Text("This is new route"),
       // ),
       body: InheritedWidgetDemo(),

@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 
 class OptionItem extends StatelessWidget {
   const OptionItem(
-      {Key key, this.leading, this.title, this.trailing, this.trailingIcon})
+      {Key? key,
+      this.leading,
+      this.title = "",
+      this.trailing = "",
+      this.trailingIcon})
       : super(key: key);
 
-  final IconData leading;
+  final IconData? leading;
 
   final String title;
 
   final String trailing;
 
-  final IconData trailingIcon;
+  final IconData? trailingIcon;
 
   @override
   Widget build(BuildContext context) {

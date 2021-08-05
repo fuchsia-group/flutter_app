@@ -9,7 +9,7 @@ class ScaffoldDemo extends StatefulWidget {
 
 class ScaffoldDemoState extends State<ScaffoldDemo>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
   List tabs = ["新闻", "历史", "图片"];
 
   int _selectedIndex = 1;

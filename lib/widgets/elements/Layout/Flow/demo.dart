@@ -24,7 +24,6 @@ class FlowDemoState extends State<FlowDemo> {
         Container(width: 80.0, height: 80.0, color: Colors.yellow),
         Container(width: 80.0, height: 80.0, color: Colors.brown),
         Container(width: 80.0, height: 80.0, color: Colors.purple)
-
       ],
     );
   }
@@ -33,7 +32,7 @@ class FlowDemoState extends State<FlowDemo> {
 class TestFlowDelegate implements FlowDelegate {
   EdgeInsets margin = EdgeInsets.zero;
 
-  TestFlowDelegate({this.margin});
+  TestFlowDelegate({this.margin = EdgeInsets.zero});
 
   @override
   BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
@@ -50,15 +49,15 @@ class TestFlowDelegate implements FlowDelegate {
     var x = margin.left;
     var y = margin.top;
     for (var i = 0; i < context.childCount; i++) {
-      var w = context.getChildSize(i).width + x + margin.right;
+      var w = context.getChildSize(i)!.width + x + margin.right;
       if (w < context.size.width) {
         context.paintChild(i, transform: Matrix4.translationValues(x, y, 0.0));
         x = w + margin.left;
       } else {
         x = margin.left;
-        y += context.getChildSize(i).height + margin.top + margin.bottom;
+        y += context.getChildSize(i)!.height + margin.top + margin.bottom;
         context.paintChild(i, transform: Matrix4.translationValues(x, y, 0.0));
-        x += context.getChildSize(i).width + margin.left + margin.right;
+        x += context.getChildSize(i)!.width + margin.left + margin.right;
       }
     }
   }
@@ -70,6 +69,6 @@ class TestFlowDelegate implements FlowDelegate {
 
   @override
   bool shouldRepaint(FlowDelegate oldDelegate) {
-    return null;
+    return false;
   }
 }

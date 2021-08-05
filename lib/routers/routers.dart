@@ -1,4 +1,3 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/index.dart';
@@ -14,14 +13,13 @@ class Routes {
   static void configureRoutes(Router router) {
     List widgetDemosList = WidgetDemoList().getDemos();
 
-    router.notFoundHandler = new Handler(
-      handlerFunc: (BuildContext context, Map<String,List<String>> params) {
-        print("ROUTE WAS NOT FOUND !!!");
-      }
-    );
-    router.define(root, handler: rootHandler);
+    // router.notFoundHandler = new Handler(
+    //     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    //   print("ROUTE WAS NOT FOUND !!!");
+    // });
+    // // router.define(root, handler: rootHandler);
 
-    // router.define('/category/:type', categoryHandler);
-    router.define('/category/error/404', handler: widgetNotFoundHandler);
+    // // router.define('/category/:type', categoryHandler);
+    // router.define('/category/error/404', handler: widgetNotFoundHandler);
   }
 }

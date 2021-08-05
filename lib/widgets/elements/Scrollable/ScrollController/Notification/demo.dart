@@ -20,6 +20,7 @@ class ScrollNotificationDemoState extends State<ScrollNotificationDemo> {
           setState(() {
             _progress = "${(progress * 100).toInt()}%";
           });
+          return true;
         },
         child: Stack(
           alignment: Alignment.center,

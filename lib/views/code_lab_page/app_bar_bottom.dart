@@ -8,7 +8,7 @@ class AppBarBottomSample extends StatefulWidget {
 
 class AppBarBottomSampleState extends State<AppBarBottomSample>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -58,7 +58,8 @@ class AppBarBottomSampleState extends State<AppBarBottomSample>
             child: Container(
               height: 48.0,
               alignment: Alignment.center,
-              child: TabPageSelector(controller: _tabController,selectedColor: Colors.red),
+              child: TabPageSelector(
+                  controller: _tabController, selectedColor: Colors.red),
             ),
           ),
         ),
@@ -78,8 +79,8 @@ class AppBarBottomSampleState extends State<AppBarBottomSample>
 
 class Choice {
   const Choice({this.title, this.icon});
-  final String title;
-  final IconData icon;
+  final String? title;
+  final IconData? icon;
 }
 
 const List<Choice> choices = const <Choice>[
@@ -92,13 +93,13 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class ChoiceCard extends StatelessWidget {
-  const ChoiceCard({Key key, this.choice}) : super(key: key);
+  const ChoiceCard({Key? key, this.choice}) : super(key: key);
 
-  final Choice choice;
+  final Choice? choice;
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    final TextStyle? textStyle = Theme.of(context).textTheme.display1;
     return Card(
       color: Colors.white,
       child: Center(
@@ -106,8 +107,8 @@ class ChoiceCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Icon(choice.icon, size: 128.0, color: textStyle.color),
-            Text(choice.title, style: textStyle)
+            Icon(choice?.icon, size: 128.0, color: textStyle?.color),
+            Text(choice?.title ?? "", style: textStyle)
           ],
         ),
       ),

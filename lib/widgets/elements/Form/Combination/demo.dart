@@ -30,7 +30,7 @@ class FormDemoState extends State<FormDemo> {
                     hintText: "用户名或邮箱",
                     icon: Icon(Icons.person)),
                 validator: (v) {
-                  return v.trim().length > 0 ? null : "用户名不能为空";
+                  return v!.trim().length > 0 ? null : "用户名不能为空";
                 },
               ),
               TextFormField(
@@ -41,7 +41,7 @@ class FormDemoState extends State<FormDemo> {
                     icon: Icon(Icons.lock)),
                 obscureText: true,
                 validator: (v) {
-                  return v.trim().length > 5 ? null : "密码不能少于6位";
+                  return v!.trim().length > 5 ? null : "密码不能少于6位";
                 },
               ),
               Padding(
@@ -65,7 +65,7 @@ class FormDemoState extends State<FormDemo> {
                           //   //验证通过提交数据
                           // }
                           //由于本widget也是Form的子代widget，所以可以通过下面方式获取FormState
-                          if (Form.of(context).validate()) {
+                          if (Form.of(context)!.validate()) {
                             //验证通过提交数据
                           }
                         },

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 class HttpUtil {
-  static HttpUtil instance;
-  Dio dio;
-  BaseOptions options;
+  static late HttpUtil instance;
+  late Dio dio;
+  late BaseOptions options;
 
   static HttpUtil getInstance() {
     if (instance == null) {
@@ -32,7 +32,7 @@ class HttpUtil {
 
   get(url, {data, options, cancelToken}) async {
     print('get请求启动! url：$url ,body: $data');
-    Response response;
+    Response? response;
     try {
       response = await dio.get(
         url,
@@ -46,12 +46,12 @@ class HttpUtil {
       }
       print('get请求发生错误：$e');
     }
-    return response.data;
+    return response?.data;
   }
 
   post(url, {data, options, cancelToken}) async {
     print('post请求启动! url：$url ,body: $data');
-    Response response;
+    Response? response;
     try {
       response = await dio.post(
         url,
@@ -65,6 +65,6 @@ class HttpUtil {
       }
       print('post请求发生错误：$e');
     }
-    return response.data;
+    return response?.data;
   }
 }

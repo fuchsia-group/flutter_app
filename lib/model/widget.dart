@@ -1,4 +1,3 @@
-
 import "package:flutter/material.dart";
 
 abstract class WidgetInterface {
@@ -39,20 +38,20 @@ class WidgetPoint implements WidgetInterface {
   String doc;
 
   //组件 demo ，多个以 , 分割
-  String demo;
+  String? demo;
 
   //类目 id
   int catId;
-  final WidgetBuilder buildRouter;
+  final WidgetBuilder? buildRouter;
 
   WidgetPoint(
-      {this.id,
-      this.name,
-      this.cnName,
-      this.image,
-      this.doc,
-      this.catId,
-      this.routerName,
+      {this.id = 0,
+      this.name = "",
+      this.cnName = "",
+      this.image = "",
+      this.doc = "",
+      this.catId = 0,
+      this.routerName = "",
       this.buildRouter});
 
   WidgetPoint.fromJSON(Map json)
@@ -69,7 +68,7 @@ class WidgetPoint implements WidgetInterface {
     return '(WidgetPoint $name)';
   }
 
-  Object toMap() {
+  Map toMap() {
     return {
       'id': id,
       'name': name,

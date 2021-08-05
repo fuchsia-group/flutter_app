@@ -1,14 +1,13 @@
-
-abstract class CatInterface{
-    int get id;
-    //类目名称
-    String get name;
-    //描述
-    String get desc;
-    //第几级类目，默认 1
-    int get depth;
-    //父类目id，没有为 0
-    int get parentId;
+abstract class CatInterface {
+  int get id;
+  //类目名称
+  String get name;
+  //描述
+  String get desc;
+  //第几级类目，默认 1
+  int get depth;
+  //父类目id，没有为 0
+  int get parentId;
 }
 
 class Cat implements CatInterface {
@@ -18,7 +17,12 @@ class Cat implements CatInterface {
   int depth;
   int parentId;
 
-  Cat({this.id, this.name, this.desc, this.depth, this.parentId});
+  Cat(
+      {this.id = 0,
+      this.name = "",
+      this.desc = "",
+      this.depth = 0,
+      this.parentId = 0});
 
   Cat.fromJSON(Map json)
       : id = json['id'],
@@ -40,13 +44,12 @@ class Cat implements CatInterface {
       'parentId': parentId
     };
   }
+
   Map toSqlCondition() {
     Map _map = this.toMap();
     Map condition = {};
     _map.forEach((k, value) {
-
       if (value != null) {
-
         condition[k] = value;
       }
     });

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CheckBoxDemo extends StatefulWidget {
-
   @override
   CheckBoxDemoState createState() {
     return CheckBoxDemoState();
@@ -9,7 +8,6 @@ class CheckBoxDemo extends StatefulWidget {
 }
 
 class CheckBoxDemoState extends State<CheckBoxDemo> {
-
   bool _switchSelected = true;
   bool _checkboxSelected = true;
 
@@ -31,7 +29,7 @@ class CheckBoxDemoState extends State<CheckBoxDemo> {
             activeColor: Colors.red,
             onChanged: (value) {
               setState(() {
-                _checkboxSelected = value;
+                _checkboxSelected = value!;
               });
             },
           )

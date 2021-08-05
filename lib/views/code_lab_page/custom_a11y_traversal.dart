@@ -3,11 +3,11 @@ import 'package:flutter/semantics.dart';
 
 class RowColumnTraversal extends StatelessWidget {
   const RowColumnTraversal(
-      {this.rowOrder, this.columnOrder, this.child});
+      {this.rowOrder = 0, this.columnOrder = 0, this.child});
 
   final int rowOrder;
   final int columnOrder;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +23,20 @@ class RowColumnTraversal extends StatelessWidget {
 
 class SpinnerButton extends StatelessWidget {
   const SpinnerButton(
-      {Key key,
+      {Key? key,
       this.onPressed,
       this.icon,
-      this.rowOrder,
-      this.columnOrder,
+      this.rowOrder = 0,
+      this.columnOrder = 0,
       this.field,
-      this.increment})
+      this.increment = false})
       : super(key: key);
 
-  final VoidCallback onPressed;
-  final IconData icon;
+  final VoidCallback? onPressed;
+  final IconData? icon;
   final int rowOrder;
   final int columnOrder;
-  final Field field;
+  final Field? field;
   final bool increment;
 
   @override
@@ -59,21 +59,21 @@ class SpinnerButton extends StatelessWidget {
 
 class FieldWidget extends StatelessWidget {
   const FieldWidget(
-      {Key key,
-      this.rowOrder,
-      this.columnOrder,
+      {Key? key,
+      this.rowOrder = 0,
+      this.columnOrder = 0,
       this.onIncrease,
       this.onDecrease,
-      this.value,
+      this.value = 0,
       this.field})
       : super(key: key);
 
   final int rowOrder;
   final int columnOrder;
-  final VoidCallback onDecrease;
-  final VoidCallback onIncrease;
+  final VoidCallback? onDecrease;
+  final VoidCallback? onIncrease;
   final int value;
-  final Field field;
+  final Field? field;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +98,10 @@ class FieldWidget extends StatelessWidget {
 }
 
 enum Field { DOGS, CATS, FISH }
-String _fieldToName(Field field) {
+String _fieldToName(Field? field) {
+  if (null == field) {
+    return "";
+  }
   switch (field) {
     case Field.DOGS:
       return "Dogs";
@@ -107,7 +110,6 @@ String _fieldToName(Field field) {
     case Field.FISH:
       return "Fish";
   }
-  return null;
 }
 
 class CustomTraversalExample extends StatefulWidget {

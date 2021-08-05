@@ -28,7 +28,7 @@ class HemoPageState extends State<HemoPage> {
     super.initState();
     for (var i = 0; i < tabs.length; i++) {
       myTabs.add(BottomNavigationBarItem(
-        title: tabs[i]['text'],
+        label: (tabs[i]['text'] as Text).data,
         icon: tabs[i]['icon'],
       ));
     }

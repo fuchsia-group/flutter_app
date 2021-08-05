@@ -8,13 +8,12 @@ class PointerDemo extends StatefulWidget {
 }
 
 class PointerDemoState extends State<PointerDemo> {
-  PointerEvent _event;
+  PointerEvent? _event;
 
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
       child: SingleChildScrollView(
-        
         child: Column(
           children: <Widget>[
             Listener(

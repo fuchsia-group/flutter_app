@@ -1,28 +1,28 @@
 class WidgetEntry {
   final List<WidgetEntry> children;
 
-  int id;
+  int id = 0;
 
   //组件英文名
-  final String name;
+  String name = "";
 
   //组件中文名
-  String cnName;
+  String cnName = "";
 
   //组件截图
-  String image;
+  String? image = "";
 
   // 路由地址
-  String routerName;
+  String routerName = "";
 
   //组件markdown 文档
-  String doc;
+  String doc = "";
 
   //组件 demo ，多个以 , 分割
-  String demo;
+  String demo = "";
 
   //类目 id
-  int catId;
+  int catId = 0;
 
   final WidgetEntry widget;
 

@@ -3,7 +3,7 @@ import 'mine_title_bar.dart';
 import 'mine_body.dart';
 
 class MinePage extends StatefulWidget {
-  MinePage({Key key}) : super(key: key);
+  MinePage({Key? key}) : super(key: key);
 
   @override
   createState() => _MinePageState();
@@ -20,10 +20,9 @@ class _MinePageState extends State<MinePage> {
         ),
         body: Scrollbar(
           child: SingleChildScrollView(
-            child: Column(children: <Widget>[
-              MineTop(),
-              MineBody()
-            ],),
+            child: Column(
+              children: <Widget>[MineTop(), MineBody()],
+            ),
           ),
         ));
   }
@@ -49,16 +48,20 @@ class MineTop extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.blueGrey[100], width: 3)),
+                    border: Border.all(color: Colors.blueGrey[100]!, width: 3)),
               ),
-              Icon(Icons.person,
-              size: 50,
-              color: Colors.blue,
+              Icon(
+                Icons.person,
+                size: 50,
+                color: Colors.blue,
               )
             ],
           ),
           SizedBox(height: 10),
-          Text("10086",style: TextStyle(color: Colors.white,fontSize: 15),)
+          Text(
+            "10086",
+            style: TextStyle(color: Colors.white, fontSize: 15),
+          )
         ],
       ),
     );

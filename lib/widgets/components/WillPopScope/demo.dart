@@ -8,8 +8,7 @@ class WillPopScopeDemo extends StatefulWidget {
 }
 
 class WillPopScopeDemoState extends State<WillPopScopeDemo> {
-
-  DateTime _lastPressedAt; // 上次点击时间
+  DateTime? _lastPressedAt; // 上次点击时间
 
   @override
   void initState() {
@@ -20,9 +19,10 @@ class WillPopScopeDemoState extends State<WillPopScopeDemo> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (_lastPressedAt ==null || DateTime.now().difference(_lastPressedAt) > Duration(seconds: 1)) {
+        if (_lastPressedAt == null ||
+            DateTime.now().difference(_lastPressedAt!) > Duration(seconds: 1)) {
           _lastPressedAt = DateTime.now();
-            return false;
+          return false;
         }
         return true;
       },
@@ -32,5 +32,4 @@ class WillPopScopeDemoState extends State<WillPopScopeDemo> {
       ),
     );
   }
-
 }

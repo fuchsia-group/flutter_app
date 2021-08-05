@@ -3,7 +3,7 @@ import 'package:flutter_app/widgets/elements/Form/TextField/index.dart';
 import 'main.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -45,7 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("首页"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.share), onPressed: () {}),
-          IconButton(icon: Icon(Icons.favorite, color: Colors.white, ), onPressed: null,)
+          IconButton(
+            icon: Icon(
+              Icons.favorite,
+              color: Colors.white,
+            ),
+            onPressed: null,
+          )
         ],
       ),
       drawer: MyDrawer(),

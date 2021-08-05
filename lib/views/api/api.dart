@@ -13,8 +13,7 @@ class APIDemo extends StatefulWidget {
   createState() => APIDemoState();
 }
 
-class APIDemoState extends State<APIDemo>
-    with TickerProviderStateMixin {
+class APIDemoState extends State<APIDemo> with TickerProviderStateMixin {
   final List _messages = [
     {"text": "FutureBuilder", "widget": FutureBuilderSample()},
   ];

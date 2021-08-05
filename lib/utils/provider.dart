@@ -7,10 +7,10 @@ import 'package:sqflite/sqflite.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class Provider {
-  static Database db;
+  static late Database db;
 
   // 获取数据库中所有的表
-  Future<List> getTables() async {
+  Future<List<String>> getTables() async {
     if (db == null) {
       return Future.value([]);
     }

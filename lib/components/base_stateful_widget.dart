@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class BaseStatefulWidget extends StatefulWidget {
-
-  State<BaseStatefulWidget> state;
+  // State<BaseStatefulWidget> state;
 
   @override
   createState() => _BaseStatefulWidgetState();
@@ -16,7 +15,6 @@ abstract class BaseStatefulWidget extends StatefulWidget {
 }
 
 class _BaseStatefulWidgetState extends State<BaseStatefulWidget> {
-  
   @override
   void initState() {
     super.initState();
@@ -31,7 +29,7 @@ class _BaseStatefulWidgetState extends State<BaseStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    widget.state = this;
+    // widget.state = this;
     return widget.build(context);
   }
 }

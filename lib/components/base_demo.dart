@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class BaseDemo extends StatelessWidget {
-  
-  String title = "";
+  final String title = "";
 
   @protected
   Widget createWidget(BuildContext context);

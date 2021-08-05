@@ -9,7 +9,7 @@ class HemoPage extends StatefulWidget {
 
 class HemoPageState extends State<HemoPage>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
 
   static List tabs = [
     {"text": "WIDGET", "icon": Icon(Icons.extension)},
@@ -34,14 +34,14 @@ class HemoPageState extends State<HemoPage>
         icon: tabs[i]['icon'],
       ));
     }
-    _tabController.addListener(() {
+    _tabController?.addListener(() {
       _onTabChange();
     });
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 
@@ -78,7 +78,7 @@ class HemoPageState extends State<HemoPage>
 
   void _onTabChange() {
     if (this.mounted) {
-      this.setState(appBarTitle = tabs[_tabController.index]["text"]);
+      this.setState(appBarTitle = tabs[_tabController?.index ?? 0]["text"]);
     }
   }
 

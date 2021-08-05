@@ -63,7 +63,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.grey[200]))),
+            border: Border(top: BorderSide(color: Colors.grey[200]!))),
       ),
     );
   }
@@ -71,7 +71,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   @override
   void dispose() {
     for (ChatMessage message in _messages) {
-      message.animationController.dispose();
+      message.animationController?.dispose();
     }
     super.dispose();
   }
@@ -131,9 +131,9 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     });
 
     if (_count % 2 == 0) {
-      otherMsg.animationController.forward();
+      otherMsg.animationController?.forward();
     } else {
-      selfMsg.animationController.forward();
+      selfMsg.animationController?.forward();
     }
     _count++;
   }
@@ -146,8 +146,8 @@ class SelfChatMessage extends ChatMessage {
   @override
   Widget build(BuildContext context) {
     return SizeTransition(
-        sizeFactor:
-            CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+        sizeFactor: CurvedAnimation(
+            parent: animationController!, curve: Curves.easeOut),
         axisAlignment: 0.0,
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -192,8 +192,8 @@ class OtherChatMessage extends ChatMessage {
   @override
   Widget build(BuildContext context) {
     return SizeTransition(
-        sizeFactor:
-            CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+        sizeFactor: CurvedAnimation(
+            parent: animationController!, curve: Curves.easeOut),
         axisAlignment: 0.0,
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -232,7 +232,7 @@ class OtherChatMessage extends ChatMessage {
 }
 
 abstract class ChatMessage extends StatelessWidget {
-  ChatMessage({this.text, this.animationController});
+  ChatMessage({this.text = "", this.animationController});
   final String text;
-  final AnimationController animationController;
+  final AnimationController? animationController;
 }

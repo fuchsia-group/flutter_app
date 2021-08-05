@@ -24,7 +24,8 @@ class MaterialButtonDemo extends StatelessWidget {
             colorBrightness: Brightness.dark,
             splashColor: Colors.grey,
             child: Text("FlatButton"),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
             onPressed: () {
               print("click FlatButton");
             },
@@ -43,13 +44,13 @@ class MaterialButtonDemo extends StatelessWidget {
             },
             color: Theme.of(context).primaryColor,
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
               print('click RaisedButton');
             },
             child: Text('RaisedButton'),
           ),
-          OutlineButton(
+          OutlinedButton(
             child: Text("normal"),
             onPressed: () {
               print("click OutlineButton");
@@ -57,7 +58,7 @@ class MaterialButtonDemo extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.thumb_up),
-            onPressed: (){
+            onPressed: () {
               print("click IconButton");
             },
           )
